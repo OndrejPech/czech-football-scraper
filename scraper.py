@@ -48,6 +48,6 @@ if not os.path.exists(league_id):
 
 with open(league_id + '/basic.json', 'w') as file:
     json.dump(basic_info, file, indent=4)
-#
+
 with open(league_id + '/games.json', 'w') as file:
     json.dump(games, file, indent=4)
