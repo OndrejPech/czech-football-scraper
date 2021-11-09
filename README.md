@@ -29,7 +29,9 @@ I created this project for my home league, where is working for my needs perfect
 
 In some lower leagues can happened, that line ups are missing or there is a mistake in the lineup. In such a case I decided to inform user about the mistake and download all other info axcept the lineup of the team.
 
-
+<img width="798" alt="1" src="https://user-images.githubusercontent.com/78157639/140912271-56d5cbf8-84e3-4ca0-933c-28f4fcaf7c42.png">
 
 
 If you find a league with Uknown mistake, or league which cause the program to qiut please let me know and I will try to fix it.
+
+<img width="798" alt="Unkwown err" src="https://user-images.githubusercontent.com/78157639/140912286-5974ca3c-f0da-4bd0-8477-443ebbf19fbd.png">
