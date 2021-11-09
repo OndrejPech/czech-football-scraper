@@ -423,10 +423,11 @@ def get_players(team: str, tag) -> list:
         print(f'Missing line up for {team} in the game bellow.')
         return []
 
+    team_name_official = tag.strong.text
     text = nice_text(tag.text)
+    text = text.replace(team_name_official, "").strip()  # remove team_name
     # separate text into 11 items
     items = text.split(',')
-    items[0] = items[0].replace(team, "").strip()  # remove team name
     top11 = []
     # sometimes happened that players are not separated with ',' but with '-'
     # this loop flatten the items list and players will remain in same order
