@@ -159,7 +159,13 @@ def scrap_games_in_league(link: str) -> dict:
             link = base_url + relative_link
 
             result_tag = match.find('td', {'class': 'zapas-item-vysledek'})
+
             score_date_tags = result_tag.find_all('a')
+            if len(score_date_tags) <= 1:
+                print(f'Match {match_id} between '
+                      f'{home_team} and {away_team} was CANCELLED')
+                continue
+
             score_tag = score_date_tags[0]
             date_tag = score_date_tags[1]
 
