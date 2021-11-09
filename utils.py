@@ -165,10 +165,10 @@ def scrap_games_in_league(link: str) -> dict:
 
             # get full_time_score and half_time_score and type as nice strings
             ugly_score = score_tag.text.strip()
-            if 'kont' in ugly_score:  # game ended with contumacy
+            if 'kont' in ugly_score:  # game ended with forfeit
                 full_time_score = ugly_score.split('kont.')[0].strip()
                 half_time_score = '-:-'
-                result_type = 'contumacy'
+                result_type = 'forfeit'
             else:
                 full_time_score = ugly_score.split('(')[0].strip()
                 half_time_score = ugly_score.split('(')[1].strip().strip(')')
@@ -213,8 +213,9 @@ def scrap_games_in_league(link: str) -> dict:
             home_id = tag_home_team["href"].split('/')[-2]
             away_id = tag_away_team["href"].split('/')[-2]
 
-            if result_type == 'contumacy':  # no more info needed
+            if result_type == 'forfeit':  # no more info needed
                 home = away = cards = goals = []
+                print('Forfeited match bellow.')
             else:  # get lineups,goals and cards
                 tag_line_ups = soup.find('h4', text="Sestavy").find_parent()
                 sections = tag_line_ups.find_all('div')
