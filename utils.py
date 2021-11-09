@@ -279,7 +279,7 @@ def scrap_games_in_league(link: str) -> dict:
                   f"{home_team} vs {away_team} ended",
                   f"{full_time_score}({half_time_score}). Match id:{match_id}",
                   end='')
-            print('.Scrapping OK')
+            print('.Scraping OK')
 
     print(f'Total of {game_num} games scrapped')
     return games
