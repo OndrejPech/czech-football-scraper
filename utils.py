@@ -237,8 +237,17 @@ def scrap_games_in_league(link: str) -> dict:
                     elif 'ŽK:' in tag_strong or 'ČK:' in tag_strong:  # to cards
                         div_cards = section
 
-                home = get_players(home_team, div_home)
-                away = get_players(away_team, div_away)
+                try:
+                    home = get_players(home_team, div_home)
+                except IndexError:
+                    print(f'Unknown error by scraping {home_team} line up.')
+                    home = []
+                try:
+                    away = get_players(away_team, div_away)
+                except IndexError:
+                    print(f'Unknown error by scraping {away_team} line up.')
+                    away = []
+
                 cards = cards_received(div_cards)
 
                 tag_goals = soup.find('h4', text="Branky").find_parent()
