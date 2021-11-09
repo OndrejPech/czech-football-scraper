@@ -192,7 +192,7 @@ def scrap_games_in_league(link: str) -> dict:
             if full_time_score.split(':')[0] == '-':
                 print(f"Match {match_id} between {home_team} and {away_team} "
                       f"takes place {match_datetime}", end=' ')
-                print('FUTURE GAME, NOT SAVED')
+                print('UNKNOWN RESULT, NOT SAVED')
                 continue
 
             game_num += 1
