@@ -55,10 +55,10 @@ def create_jsons(id_league: str, base_info: dict, all_games: dict) -> None:
         os.makedirs(id_league)
 
     with open(id_league + '/basic.json', 'w') as file:
-        json.dump(base_info, file, indent=4)
+        json.dump(base_info, file, indent=4, ensure_ascii=False)
 
     with open(id_league + '/games.json', 'w') as file:
-        json.dump(all_games, file, indent=4)
+        json.dump(all_games, file, indent=4, ensure_ascii=False)
 
 
 MAIN_LINK = "https://fotbalunas.cz"
