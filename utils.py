@@ -106,8 +106,9 @@ def scrap_games_in_league(link: str) -> dict:
     """
     go through all the games in league.
     Get all the basic info and open new link for each game to get more info.
-    Scrapes goal, cards, lineups etc.
-    return dictionary with these keys
+    Each game is saved in nested dictionary with match_id as key and following
+    key-value pairs.
+
     {
       "match_id",
       "competition_id",
