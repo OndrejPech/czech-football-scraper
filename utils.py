@@ -170,8 +170,22 @@ def scrap_games_in_league(link: str) -> dict:
             score_tag = score_date_tags[0]
             date_tag = score_date_tags[1]
 
+            # get datetime of match as datetime object
+            m_datetime = date_tag.text.strip().split()
+            m_month = int(m_datetime[0].split('.')[1])
+            m_day = int(m_datetime[0].split('.')[0])
+            m_hour = int(m_datetime[1].split(':')[0])
+            m_minute = int(m_datetime[1].split(':')[1])
+            match_datetime = datetime.datetime(year, m_month, m_day, m_hour,
+                                               m_minute).isoformat()
+
             # get full_time_score and half_time_score and type as nice strings
             ugly_score = score_tag.text.strip()
+            if '%' in ugly_score:  # wrong input on HMTL result table
+                print(f"Match {match_id} between {home_team} and {away_team} "
+                      f"takes place {match_datetime}", end=' ')
+                print('UNKNOWN RESULT, NOT SAVED')
+                continue
             if 'kont' in ugly_score:  # game ended with forfeit
                 full_time_score = ugly_score.split('kont.')[0].strip()
                 half_time_score = '-:-'
@@ -186,15 +200,6 @@ def scrap_games_in_league(link: str) -> dict:
                     result_type = 'regular'
             home_score = full_time_score.split(':')[0].replace('p.', '').strip()
             away_score = full_time_score.split(':')[1].replace('p.', '').strip()
-
-            # get datetime of match as datetime object
-            m_datetime = date_tag.text.strip().split()
-            m_month = int(m_datetime[0].split('.')[1])
-            m_day = int(m_datetime[0].split('.')[0])
-            m_hour = int(m_datetime[1].split(':')[0])
-            m_minute = int(m_datetime[1].split(':')[1])
-            match_datetime = datetime.datetime(year, m_month, m_day, m_hour,
-                                               m_minute).isoformat()
 
             if full_time_score.split(':')[0] == '-':
                 print(f"Match {match_id} between {home_team} and {away_team} "
